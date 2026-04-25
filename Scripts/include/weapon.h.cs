@@ -42,7 +42,7 @@ namespace weapon {
         return uid_t.id; 
       }
     }
-    public int max_count;
+    public int max_ammo;
     public List<ammo_t> ammo; 
     public calliber_t calliber;
   }
@@ -53,18 +53,19 @@ namespace weapon {
 
   /* global weapon stats*/
   [System.Serializable]
-  public struct stats {
+  public struct stats_t {
     public btoi has_chambered_round;
     public ammo_t chambered_round;
     public magazine_t mag;
     public selector_mode_t mode;
+    public type_t type;
   }
     
   public interface h_weapon {
     public void shoot();
 
     public void reload();
-    public void reload_chamber();
+    public ammo_t reload_chamber();
 
     public void insert_mag(magazine_t mag);
     public void insert_chamber_ammo(ammo_t ammo);
@@ -75,5 +76,7 @@ namespace weapon {
 
     public void check_chamber();
     public void check_magazine();
+
+    public stats_t get_stats();
   }
 }
