@@ -1,10 +1,8 @@
 using UnityEngine;
-using include.input_h;
 using include.stdio_h;
 using include.time_h;
 using System.Collections.Generic;
 using include.math_h;
-using Attributes;
 
 namespace weapon.s {
   public class g17 : MonoBehaviour, h_weapon {
@@ -13,7 +11,7 @@ namespace weapon.s {
     [Header("Specifical")]
     public float rounds_per_minute = 600f;
     [SerializeField] private type_t type;
-    public calliber_t calliber;
+    public caliber_t caliber;
 
     [Header("Values")]
     [SerializeField] private btoi console_out = true;
@@ -22,6 +20,7 @@ namespace weapon.s {
 
     void Start() {
       stats.type = type;
+      stats.caliber = caliber;
     }
 
     /* interface implementation */
@@ -49,7 +48,7 @@ namespace weapon.s {
         uid_t = uid_t.gen(),
         max_ammo = 17,
         ammo = new List<ammo_t>(),
-        calliber = calliber
+        caliber = caliber
       };
       for (int i = 0; i < mag.max_ammo; i++) mag.ammo.Add(gen_ammo()); 
       insert_mag(mag);
@@ -121,6 +120,6 @@ namespace weapon.s {
     /* Helpers */
     private void drain_ammo() => stats.mag.ammo.RemoveAt(stats.mag.ammo.Count - 1);
     private ammo_t get_last_round_mag() => stats.mag.ammo[stats.mag.ammo.Count - 1];
-    private ammo_t gen_ammo() => new ammo_t { uid_t = uid_t.gen(), dmg = 56, penetr_power = 18 };
+    private ammo_t gen_ammo() => new ammo_t { uid_t = uid_t.gen(), dmg = 56, penetr_power = 18, caliber = caliber };
   }
 }

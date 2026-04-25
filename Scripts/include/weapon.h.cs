@@ -16,12 +16,16 @@ namespace weapon {
     SAVE, SEMI, AUTO
   }
 
-  public enum calliber_t {
+  public enum caliber_t {
     _9x19, 
     _9x18, 
     _12x70, 
     _545x39, 
     _556x45, 
+  }
+
+  public enum jammed_t {
+    WRONG_CALIBER, DONT_SERVE, STOVEPIPE
   }
 
   public struct ammo_t {
@@ -33,6 +37,7 @@ namespace weapon {
     }
     public int dmg;
     public int penetr_power;
+    public caliber_t caliber;
   }
 
   public class magazine_t {
@@ -44,7 +49,7 @@ namespace weapon {
     }
     public int max_ammo;
     public List<ammo_t> ammo; 
-    public calliber_t calliber;
+    public caliber_t caliber;
   }
 
   public enum type_t {
@@ -59,6 +64,10 @@ namespace weapon {
     public magazine_t mag;
     public selector_mode_t mode;
     public type_t type;
+    public caliber_t caliber;
+    public btoi is_jammed;
+    public jammed_t? jam_type;
+    public float condition;
   }
     
   public interface h_weapon {
