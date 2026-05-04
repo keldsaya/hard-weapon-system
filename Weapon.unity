@@ -255,9 +255,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rounds_per_minute: 600
   type: 0
-  calliber: 0
+  caliber: 0
   console_out:
-    _val: 1
+    _val: 0
 --- !u!4 &911851789
 Transform:
   m_ObjectHideFlags: 0
