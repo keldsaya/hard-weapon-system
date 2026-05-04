@@ -59,7 +59,8 @@ public class weapon_handler : MonoBehaviour, h_weapon {
   private void handle_ui() {
     /* ammo text */
     if(ammo_text != null ) {
-      if(show_ammo_text && w_stats.mag != null) {
+      if(show_ammo_text) {
+        if(w_stats.mag == null) return;
         ammo_text.text = stdio.snprintf("%s\n%s", 
           get_mag_count(w_stats.mag), 
           get_caliber_name(w_stats.caliber));
